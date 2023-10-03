@@ -1,0 +1,42 @@
+********************************************************************************
+Biblioteca CliSiTef (Android-mobile)
+Copyright (C) 2001-2019 Software Express Informática Ltda.
+
+Todos os direitos reservados. Este é um software proprietário de uso restrito.
+Consulte a Software Express para saber as condições de uso.
+********************************************************************************
+
+Conteúdo do pacote
+------------------
+
+  clisitef         Biblioteca CliSiTef Android
+    clisitef\doc   Documentação da interface Java (Javadoc)
+    clisitef\jni   Binários nativos (.so) de cada arquitetura
+    clisitef\libs  Classes Java (.jar)
+  VERSOES.TXT     Versão do pacote
+
+Inclusão no projeto
+-------------------
+
+Os arquivos .so e .jar/.aar estão separados nos diretórios acima de forma que
+o desenvolvedor da automação possa incluí-los em seu projeto Android da forma
+mais adequada à sua organização.
+
+Em linhas gerais, o conteúdo dos diretórios 'jni' deve ser copiado para o local
+de bibliotecas nativas do projeto. Da mesma forma, o conteúdo dos diretórios
+'libs' deve ser incluído no classpath do projeto do projeto
+
+Por exemplo, num projeto típico do Android Studio, o conteúdo dos diretórios
+'jni' deve ser copiado para o diretório app\src\main\jniLibs do projeto.
+Já os arquivos .jar/.aar devem ser incluídos nas "dependencies" do
+build.gradle do projeto.
+
+Informações adicionais
+----------------------
+
+A Software Express fornece um projeto Android Studio que demonstra o uso
+da CliSiTef (consulte-nos).
+
+Detalhes sobre o uso da CliSiTef Android se encontram no documento
+"CliSiTef - Interface com a aplicação - Android". Consulte a Software Express
+caso não tenha recebido este documento.

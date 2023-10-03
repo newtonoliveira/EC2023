@@ -1,2 +1,2 @@
 # EC2023
-Exemplo da Embarcadero Conference 2023
+Exemplo mostrado na Embarcadero Conference 2023

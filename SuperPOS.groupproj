@@ -1,0 +1,48 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <ProjectGuid>{87C9F5ED-216C-45C0-8157-A6F52FB477EB}</ProjectGuid>
+    </PropertyGroup>
+    <ItemGroup>
+        <Projects Include="fontes\GPOS700X\GPOS700X.dproj">
+            <Dependencies/>
+        </Projects>
+        <Projects Include="fontes\MP5\mp5.dproj">
+            <Dependencies/>
+        </Projects>
+    </ItemGroup>
+    <ProjectExtensions>
+        <Borland.Personality>Default.Personality.12</Borland.Personality>
+        <Borland.ProjectType/>
+        <BorlandProject>
+            <Default.Personality/>
+        </BorlandProject>
+    </ProjectExtensions>
+    <Target Name="GPOS700X">
+        <MSBuild Projects="fontes\GPOS700X\GPOS700X.dproj"/>
+    </Target>
+    <Target Name="GPOS700X:Clean">
+        <MSBuild Projects="fontes\GPOS700X\GPOS700X.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GPOS700X:Make">
+        <MSBuild Projects="fontes\GPOS700X\GPOS700X.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="mp5">
+        <MSBuild Projects="fontes\MP5\mp5.dproj"/>
+    </Target>
+    <Target Name="mp5:Clean">
+        <MSBuild Projects="fontes\MP5\mp5.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="mp5:Make">
+        <MSBuild Projects="fontes\MP5\mp5.dproj" Targets="Make"/>
+    </Target>
+    <Target Name="Build">
+        <CallTarget Targets="GPOS700X;mp5"/>
+    </Target>
+    <Target Name="Clean">
+        <CallTarget Targets="GPOS700X:Clean;mp5:Clean"/>
+    </Target>
+    <Target Name="Make">
+        <CallTarget Targets="GPOS700X:Make;mp5:Make"/>
+    </Target>
+    <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+</Project>
