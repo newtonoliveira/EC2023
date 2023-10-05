@@ -9,6 +9,9 @@
         <Projects Include="fontes\MP5\mp5.dproj">
             <Dependencies/>
         </Projects>
+        <Projects Include="fontes\GPOS720\GPOS720.dproj">
+            <Dependencies/>
+        </Projects>
     </ItemGroup>
     <ProjectExtensions>
         <Borland.Personality>Default.Personality.12</Borland.Personality>
@@ -35,14 +38,23 @@
     <Target Name="mp5:Make">
         <MSBuild Projects="fontes\MP5\mp5.dproj" Targets="Make"/>
     </Target>
+    <Target Name="GPOS720">
+        <MSBuild Projects="fontes\GPOS720\GPOS720.dproj"/>
+    </Target>
+    <Target Name="GPOS720:Clean">
+        <MSBuild Projects="fontes\GPOS720\GPOS720.dproj" Targets="Clean"/>
+    </Target>
+    <Target Name="GPOS720:Make">
+        <MSBuild Projects="fontes\GPOS720\GPOS720.dproj" Targets="Make"/>
+    </Target>
     <Target Name="Build">
-        <CallTarget Targets="GPOS700X;mp5"/>
+        <CallTarget Targets="GPOS700X;mp5;GPOS720"/>
     </Target>
     <Target Name="Clean">
-        <CallTarget Targets="GPOS700X:Clean;mp5:Clean"/>
+        <CallTarget Targets="GPOS700X:Clean;mp5:Clean;GPOS720:Clean"/>
     </Target>
     <Target Name="Make">
-        <CallTarget Targets="GPOS700X:Make;mp5:Make"/>
+        <CallTarget Targets="GPOS700X:Make;mp5:Make;GPOS720:Make"/>
     </Target>
     <Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
 </Project>

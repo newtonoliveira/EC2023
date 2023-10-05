@@ -1,0 +1,315 @@
+--------------------------------------------------------------
+         Biblioteca Compartilhada ABECS para o GPOS720
+                    Histórico de Versões
+--------------------------------------------------------------
+
+v1.33 (17/08/2023)
+--------------------
+- Corrigido erro "GCR068" reproduzido em testes de prioridade de AID para cartão com contato,
+com o AID configurado como "secundário" nas tabelas;
+- Adicionado contorno em camada proprietária da BC deste terminal para corrigir caso de teste
+VISA.TC.1004a do roteiro "build 015", que não devolve o "Label" da aplicação.
+
+--------------------------------------------------------------
+
+v1.32 (14/07/2023)
+--------------------
+- Alterado para kernel acatar data configurada na tag 9A;
+- Corrigido o retorno do caso de teste "DGN_L3_CL_15";
+- Corrigido o retorno da tag 9F34;
+- Adicionada proteção para "uso" (BC carregada, mas sem ser instanciada) em outros ABIs.
+
+v1.31 (23/06/2023)
+--------------------
+- Corrigido o Terminal Capabilities no PDOL em testes com cartões "ELO_APROX";
+- Corrigido retorno de Issuer Script Results no caso de teste DGN_L3_CL_04;
+- Corrigido tratamento de bytes de substituição.
+
+v1.30 (05/05/2023)
+--------------------
+- Adicionado contorno para comportamento divergente de outros terminais ao não ter DDOL e Default DDOL para a transação:
+configura um valor preenchido com zeros para o Default DDOL, para forçar um 'DDA failed' no kernel por não encontrar o 'Unpredictable Number'.
+Assim, o kernel prossegue com a transação. Sem o contorno, se o kernel não encontra o Default DDOL, a transação é encerrada.
+
+
+v1.29 (26/04/2023)
+--------------------
+- Corrige erro reproduzido de forma intermitente na camada 2.12, relacionado aos bytes de substituição do protocolo ABECS.
+
+
+v1.28 (17/04/2023)
+--------------------
+- Corrigido retorno GOC003 reproduzido com o cartão M-TIP44;
+- Modificado nome do pacote "br.com.setis.bibliotecapinpad" para "br.com.setis.gertec.bibliotecapinpad";
+- Adicionadas novas assinaturas para os métodos PP_StartGoOnChip e PP_FinishChip.
+
+--------------------------------------------------------------
+
+v1.27 (14/02/2023)
+--------------------
+- Corrigida notificação "DSP_ENCERRA_PIN" em fluxo sem configuração de Activity para a captura de PIN.
+
+Componentes:
+- SVR: F20_SVR_1.00.02.11_02
+- BL: F20_BL_1.00.02.00_22042100
+- SF: F20_SF_1.00.07.00_02_14112200
+- OS: F20_OS_1.01.06.00_000_202207051059_GERTEC_081.26_user
+- SDK: FTSDK_api_V1.0.0.84_02_20220822
+
+
+--------------------------------------------------------------
+
+v1.26 (16/12/2022)
+--------------------
+- Adicionados logs "error" e "warn" para exceções lançadas pela camada de abstração da Gertec;
+- Corrigido problema relacionado à execução do processamento EMV em mais de uma aplicação no terminal;
+- Corrigida versão do Kernel UnionPay (CST-3867);
+- Corrigido Service Code reproduzido nos casos de teste Visa L3 (CST-3878 e 3880);
+- Reincluído delay para redução de processamento do comando CKE;
+- Corrigido PAN de cartões magnéticos nos comandos Abecs em modo "PAN Criptografado";
+- Corrigido problema de travameto no comando "GTK" no caso de um cartão com chip ter PAN de 20 dígitos;
+- Permitido o uso de "GED" após "GOX";
+- Não permitido que o CVM Results seja retornado para CTLS Visa e Discover;
+- Implementado controle de "prioridade de AID" no comando "GCX" (só existia no comando "GCR").
+
+
+--------------------------------------------------------------
+
+v1.25 (25/11/2022)
+--------------------
+- Adicionada implementação da 2.12 na camada de abstração da Gertec.
+
+--------------------------------------------------------------
+
+v1.24 (23/11/2022)
+--------------------
+- Removido tratamento de eventos de cartão por broadcast.
+
+--------------------------------------------------------------
+
+v1.23 (17/11/2022)
+--------------------
+- Corrige erro de GCR_SRVCODE diferente, reproduzido com cartões Union Pay.
+
+--------------------------------------------------------------
+
+v1.22 (01/11/2022)
+--------------------
+- Adicionado tratamento para utilização de SLF4J.
+
+--------------------------------------------------------------
+
+v1.21 (25/10/2022)
+--------------------
+- Corrigido tratamento de objeto TLV com tamanho igual a zero, reproduzido em cartão com a tag 5F28 com espaços em branco.
+
+--------------------------------------------------------------
+
+v1.20 (14/10/2022)
+--------------------
+- Adicionado tratamento de eventos de cartão por broadcast.
+
+--------------------------------------------------------------
+
+v1.19 (07/10/2022)
+--------------------
+- Adicionado tratamento para transação CTLS UnionPay.
+
+--------------------------------------------------------------
+
+v1.18 (23/09/2022)
+--------------------
+- Adicionado contorno para travamento intermitente na captura de PIN da tarja, ao receber retorno imediato de cancelamento do SDK.
+
+--------------------------------------------------------------
+
+v1.17 (02/09/2022)
+--------------------
+- Modificado para reduzir o consumo de tempo no tratamento de parâmetros EMV e CAPK e na captura de PIN;
+- Atualizado o SDK para a versão 1.0.0.84_02_20220822, que possui alteração para melhorar o desempenho da transação.
+
+--------------------------------------------------------------
+
+v1.16 (11/08/2022)
+--------------------
+- Corrigido travamento de leitura.
+
+--------------------------------------------------------------
+
+v1.15 (06/08/2022)
+--------------------
+- Corrigidos cenários que causam travamento na aplicação.
+
+--------------------------------------------------------------
+
+v1.14 (22/07/2022)
+--------------------
+- Atualizado o SDK para a versão 1.0.0.81_02_20220722, que possui alteração na tecla delete para limpar de uma vez todos os dígitos da captura de PIN.
+
+--------------------------------------------------------------
+
+v1.13 (07/07/2022)
+--------------------
+- Corrigido problema intermitente de processamento do cartão contato após aproximadamente 100 transações (CST-3046).
+
+--------------------------------------------------------------
+
+v1.12 (22/06/2022)
+--------------------
+- Adicionado mapeamento do novo retorno do SDK para aplicação bloqueada;
+- Removido o contorno que corrige o erro no caso de teste com ELO_CT_09 (CST-2960)
+
+--------------------------------------------------------------
+
+v1.11 (17/06/2022)
+--------------------
+- Modificada a configuração de parâmetros para o ponto de interação do SDK, que corrige o Terminal
+Capabilities no PDOL do teste com o cartão "M-TIP50 Test 01 Scenario 01".
+
+--------------------------------------------------------------
+
+v1.10 (15/06/2022)
+--------------------
+- Adicionado o método getInstance na PPComp (CST-2933);
+- Modificação nas versões retornadas no comando GIN (CST-2955 e 2957);
+- Adicionado contorno para corrigir erro no caso de teste com ELO_CT_09 (CST-2960);
+- Corrigido retorno ST_DUMBCARD no teste com BTT (CST-2961);
+- Corrigido retorno ST_ERRCARD no comando CHP (CST-2965);
+- Corrigida a trilha dos cartões Expresspay (CST-2966);
+- Corrigida seleção de aplicações com AID prioritário (CST-2954);
+- Corrigido LED no retorno ST_CTLSEXTCVM;
+- Adicionada configuração do beep do teclado da captura de PIN.
+
+
+--------------------------------------------------------------
+
+v1.09 (06/06/2022)
+--------------------
+- Corrigido retorno de erro para cartão magnético com trilhas inválidas (CST-2653);
+- Modificado para realizar a inicialização do SDK dentro do construtor de PPComp (CST-2854);
+- Corrigidas callbacks de mensagem para a captura de PIN (CST-2855);
+- Incluído delay para redução de processamento do comando CKE;
+- Modificado para permitir o retorno do PAN e das trilhas.
+
+--------------------------------------------------------------
+
+v1.08 (20/05/2022)
+--------------------
+- Corrige retorno de cartão ausente na remoção do cartão após a seleção da aplicação no comando GCR (CST-2846);
+- Corrige execução em loop da callback MenuShow (CST-2860);
+- Impede transações contactless com valor acima de 0xFFFFFFFF (42.949.672,95), evitando assim problemas de conversão no kernel;
+- A versão do kernel Pure (PP_PUREVER) foi retirada da resposta do "GIX" sem parâmetros, de acordo com boletim SU005 da especificação v2.12;
+- Alterada lógica para definir o modo de operação da função IFD_iTransmit para cartão T=0.
+
+
+--------------------------------------------------------------
+
+v1.07 (09/05/2022)
+--------------------
+- Corrige cenário de afastamento do cartão sem contato durante o comando GCR (tickets CST-2755 e CST-2756).
+
+
+-------------------------------------------------------------
+
+v1.06 (04/05/2022)
+--------------------
+- Atualiza o SDK para versão que retorna corretamente o número serial customizado;
+- Corrige configuração da tag 9F1E para o novo número serial.
+
+
+--------------------------------------------------------------
+
+v1.05 (19/04/2022)
+--------------------
+- Corrige a callback de display para a mensagem de 'senha bloqueada';
+- Limpa o display após a captura de PIN;
+- Corrige LED do cartão sem contato no comando ChipDirect.
+
+
+--------------------------------------------------------------
+
+v1.04 (14/04/2022)
+--------------------
+- Remove quebra de linha na mensagem do comando DSP (CST-2622);
+- Devolve o retorno de cancelamento dos comandos abortados (CST-2620, CST-2658, CST-2659);
+- Reduz o tempo da carga de tabelas (CST-2633);
+- Modifica logs da camada de abstração PPComp Gertec (CST-2634);
+- Substitui '\n' por '\r' nas mensagens das callbacks de display (CST-2674);
+- Retorna número serial customizado da Gertec e capacidade de memória no comando GetInfo (CST-2621);
+- Corrige retorno de cancelamento no comando GoOnChip (CST-2631);
+- Corrige retorno de cartão sem contato ausente no comando ChipDirect (CST-2629);
+- Corrige o travamento na tela de captura de PIN (CST-2660).
+
+
+--------------------------------------------------------------
+
+v1.03 (04/03/2022)
+--------------------
+- Implementação dos demais comandos da camada PPComp Gertec;
+- Modificações para permitir disponibilizar a biblioteca como um arquivo jar;
+- Versão passa a ser disponibilizada em 3 formatos:
+    -> PPCompGPOS720-v1.03.aar
+       Não contém o SDK da Feitian, que precisa ser adicionado na aplicação.
+    -> PPCompGPOS720-v1.03-Complete.aar
+       Contém o SDK da Feitian. Possui o mesmo formato das versões enviadas anteriormente.
+    -> PPCompGPOS720-v1.03.jar
+       Formato JAR. É necessário incluir o SDK e declaração no AndroidManifest.xml da aplicação.
+
+
+--------------------------------------------------------------
+
+v1.02 (15/02/2022)
+------------------
+- Implementação parcial da camada PPComp Gertec, com suporte aos seguintes comandos:
+PP_Open, PP_Close, PP_Abort, PP_GetInfo, PP_Display, PP_DisplayEx, PP_GetPIN, PP_CheckEvent,
+PP_EncryptBuffer para MK/WK, PP_GetDUKPT, PP_RemoveCard, PP_GenericCmd, PP_GetCard,
+PP_ChangeParameter, PP_GoOnChip, PP_FinishChip, PP_TableLoadInit, PP_TableLoadRec, PP_TableLoadEnd,
+PP_GetTimeStamp, PP_SetDspCallbacks, PP_SendCmd e PP_SetKbd.
+
+--------------------------------------------------------------
+
+v1.01 (31/01/2022)
+------------------
+- Removida a necessidade de um mapa de chaves, com os grupos de chaves modificados de volta para
+  ABECS_KEY_GROUP_PIN e ABECS_KEY_GROUP_DAT;
+- Atualizadas as versões de SVR, SF e OS.
+
+
+--------------------------------------------------------------
+
+v1.00rc (07/01/2022)
+-------------------
+- Correção dos casos de teste J225, J427 e J531;
+- Atualizadas as versões de SVR, SF e OS.
+
+--------------------------------------------------------------
+
+v0.93b (27/12/2021)
+-------------------
+- Remoção de beep ao iniciar detecção de cartão;
+- Correções no HCLESS;
+- Implementação do uso de TecladoVirtual;
+- Atualizadas as versões de SVR, SF, OS e SDK.
+
+--------------------------------------------------------------
+
+v0.92b (17/12/2021)
+-------------------
+- Modificação no mapa de chaves para a pasta assets e otimização da leitura;
+- Correções no HCLESS e configuração da antena;
+- Atualização do componente SF.
+
+--------------------------------------------------------------
+
+v0.91b (10/12/2021)
+-------------------
+- Implementação da camada HCLESS;
+- Atualizadas as versões de SVR, SF, OS e SDK;
+- Modificação para utilizar arquivo com mapa de chaves.
+
+
+--------------------------------------------------------------
+
+v0.90b (30/11/2021)
+-------------------
+- Versão beta sem a implementação da camada HCLESS.

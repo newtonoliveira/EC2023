@@ -1,4 +1,0 @@
-26/04/2022 
-CliSiTef:           clisitef-7.0.117.51.r4-Simulado-mobile  
-Java Compatibility: 1.8  
-BC:                 BcLib-4.13-RUA-2.1.0.7-release 
