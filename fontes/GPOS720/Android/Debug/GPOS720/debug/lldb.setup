@@ -1,0 +1,5 @@
+platform select remote-android
+platform connect unix-abstract-connect:///data/local/tmp/debug.sock device=af8e6020
+settings set plugin.jit-loader.gdb.enable off
+process attach -pid=5732
+target symbols add "C:\Users\newto\repos\EC2023\fontes\GPOS720\Android\Debug\GPOS720\debug\libGPOS720.so"

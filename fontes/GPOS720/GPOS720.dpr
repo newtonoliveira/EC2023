@@ -9,7 +9,8 @@ uses
   uCliSiTefI in '..\comum\uCliSiTefI.pas',
   uCPermissions in '..\comum\uCPermissions.pas',
   uFrmTransacao in '..\comum\uFrmTransacao.pas' {frmTransacao},
-  uLog in '..\comum\uLog.pas';
+  uLog in '..\comum\uLog.pas',
+  uPermissoes in '..\comum\uPermissoes.pas';
 
 {$R *.res}
 

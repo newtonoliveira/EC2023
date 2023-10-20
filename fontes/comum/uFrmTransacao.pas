@@ -243,7 +243,7 @@ begin
     lCliSitef.QtdParcelas := 1;
     lCliSitef.CodigoLoja := '00000000';
     lCliSitef.NumeroTerminal := 'SE000001';
-    lCliSitef.EnderecoIPSitef := '';
+    lCliSitef.EnderecoIPSitef := 'sitefdemo.pinpag.com.br';
     lCliSitef.PortaSitef := 4096;
     lCliSitef.onRotinaColeta := RotinaColeta;
     lCliSitef.onRotinaResultado := RotinaResultado;
@@ -282,7 +282,7 @@ begin
     lCliSitef.QtdParcelas := 1;
     lCliSitef.CodigoLoja := '00000000';
     lCliSitef.NumeroTerminal := 'SE000001';
-    lCliSitef.EnderecoIPSitef := '';
+    lCliSitef.EnderecoIPSitef := 'sitefdemo.pinpag.com.br';
 
     lCliSitef.PortaSitef := 4096;
     lCliSitef.onRotinaColeta := RotinaColeta;

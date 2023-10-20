@@ -1,0 +1,2 @@
+.\assets\CLSIT
+.\assets\Cheque.ini
